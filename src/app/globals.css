@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8F9FA;
+  --foreground: #1A1A1A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-blob-card: #E0E0E0;
+  --color-blob-cyan: #00E5FF;
+  --color-blob-pink: #FF007F;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
