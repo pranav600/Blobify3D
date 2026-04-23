@@ -1,0 +1,75 @@
+"use client";
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+
+const BLOB_IMAGES = [
+  "/blob_cyan.png",
+  "/blob_pink.png",
+  "/blob_orange.png",
+  "/blob_purple_pill.png",
+  "/blob_yellow_spring.png",
+  "/blob_green_ring.png",
+  "/blob_red_heart.png",
+  "/blob_blue_drop.png",
+  "/blob_gold_sphere.png",
+];
+
+const mockBlobs = Array.from({ length: 9 }).map((_, i) => ({
+  id: i,
+  title: `Blob ${i + 1}`,
+  user: `@creator_${i}`,
+  image: BLOB_IMAGES[i % BLOB_IMAGES.length],
+}));
+
+export default function BlobGrid() {
+  return (
+    <section id="blobgrid" className="relative w-full max-w-[95%] mx-auto mt-12 pb-48 scroll-mt-24">
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {mockBlobs.map((blob, index) => (
+          <motion.div
+            key={blob.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
+            className="group relative bg-white rounded-[32px] aspect-[4/3] flex items-center justify-center overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
+          >
+            <div className={`relative w-2/3 h-2/3 transition-transform duration-500 group-hover:scale-110 drop-shadow-xl mix-blend-multiply ${index % 2 === 0 ? '-rotate-12' : 'rotate-12'}`}>
+              <Image src={blob.image} alt={blob.title} fill className="object-contain" />
+            </div>
+            
+            <div className="absolute top-4 left-4 right-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <span className="bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-black border border-white">
+                {blob.user}
+              </span>
+              <span className="bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-black border border-white">
+                {blob.title}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Waitlist Overlay */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ margin: "100px 0px -200px 0px" }} // Trigger later
+        className="fixed bottom-10 left-1/2 -translate-x-1/2 z-40"
+      >
+        <div className="bg-black text-white px-8 py-5 rounded-[24px] shadow-2xl flex flex-col sm:flex-row items-center gap-6 border border-white/20">
+          <div>
+            <h4 className="font-bold text-lg">Join The Waitlist</h4>
+            <p className="text-gray-400 text-sm font-medium">Get early access to all 3D blobs when we launch!</p>
+          </div>
+          <button className="bg-blob-cyan text-black px-6 py-2.5 rounded-full font-bold hover:scale-105 transition-transform whitespace-nowrap">
+            Sign Up Now
+          </button>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
