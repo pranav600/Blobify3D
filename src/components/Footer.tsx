@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Camera, Code } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -21,9 +21,22 @@ export default function Footer() {
         </span>
         <div className="h-6 w-[1px] bg-gray-300 mx-2" />
         <div className="flex items-center gap-4 text-gray-400">
-          <MessageCircle className="w-5 h-5 hover:text-blob-purple cursor-pointer transition-colors" />
-          <Camera className="w-5 h-5 hover:text-black cursor-pointer transition-colors" />
-          <Code className="w-5 h-5 hover:text-black cursor-pointer transition-colors" />
+          <a
+            href={process.env.NEXT_PUBLIC_GITHUB}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black transition-colors"
+          >
+            <FaGithub className="w-5 h-5" />
+          </a>
+          <a
+            href={process.env.NEXT_PUBLIC_LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#0A66C2] transition-colors"
+          >
+            <FaLinkedin className="w-5 h-5" />
+          </a>
         </div>
       </div>
     </footer>

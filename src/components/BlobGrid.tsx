@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Download } from "lucide-react";
 
 const BLOB_IMAGES = [
   "/blob_cyan Background Removed.png",
@@ -64,6 +65,18 @@ export default function BlobGrid() {
               <span className="bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-black border border-white">
                 {blob.title}
               </span>
+            </div>
+
+            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+              <a
+                href={blob.image}
+                download={`${blob.title.replace(/\s+/g, "_")}.png`}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white/80 backdrop-blur-md w-10 h-10 rounded-full text-black hover:bg-white hover:scale-110 transition-all border border-white shadow-md flex items-center justify-center"
+                aria-label={`Download ${blob.title}`}
+              >
+                <Download size={18} strokeWidth={2.5} />
+              </a>
             </div>
           </motion.div>
         ))}
