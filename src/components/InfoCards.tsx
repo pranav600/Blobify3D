@@ -4,11 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Presentation } from 'lucide-react';
 
+// InfoCards: Three-column bento section — community card, library headline, and stats card
 export default function InfoCards() {
   return (
     <section className="w-full max-w-[95%] mx-auto mt-20 mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      {/* Left Card */}
+      {/* Left Card — highlights the creator community with avatar stack and tagline */}}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +38,7 @@ export default function InfoCards() {
         </div>
       </motion.div>
 
-      {/* Middle Text Area */}
+      {/* Middle Text Area — centered icon, main library headline, and supporting tagline */}}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -54,7 +55,7 @@ export default function InfoCards() {
         </p>
       </motion.div>
 
-      {/* Right Card */}
+      {/* Right Card — dark news card showcasing upcoming blob collection count */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
