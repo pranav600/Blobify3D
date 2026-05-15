@@ -36,7 +36,7 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Cyan blob — slow scale + rotate loop anchored to top-left; drifts down on scroll */}}
+        {/* Cyan blob — slow scale + rotate loop anchored to top-left; drifts down on scroll */}
         <motion.div
           style={{ y: y1 }}
           animate={{ scale: [1, 1.5, 1], rotate: [0, 10, -10, 0] }}
@@ -64,7 +64,7 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll CTA — bouncing arrow anchored to the bottom edge of the hero card */}}
+      {/* Scroll CTA — bouncing arrow anchored to the bottom edge of the hero card */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
         <a
           href="#blobgrid"

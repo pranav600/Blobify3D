@@ -31,7 +31,7 @@ export default function BlobGrid() {
     <section
       id="blobgrid"
       className="relative w-full max-w-[95%] mx-auto mt-12 pb-48 scroll-mt-24">
-      {/* Grid — 1-col on mobile, 2-col on sm, 3-col on lg; cards fade-slide in on viewport entry */}}
+      {/* Grid — 1-col on mobile, 2-col on sm, 3-col on lg; cards fade-slide in on viewport entry */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {mockBlobs.map((blob, index) => (
           <motion.div
