@@ -5,9 +5,12 @@ import { motion, useScroll, useTransform, animate } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 
+// HeroSection: Full-viewport hero card with parallax blobs, headline text, and animated scroll CTA
 export default function HeroSection() {
   const { scrollY } = useScroll();
+  // y1: slow downward drift — gives the cyan blob a parallax floating effect
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
+  // y2: upward counter-drift — gives the pink blob a contrasting parallax direction
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
   return (
@@ -20,7 +23,7 @@ export default function HeroSection() {
         className="w-full h-[75vh] min-h-[600px] bg-blob-card rounded-[48px] md:rounded-[60px] relative overflow-hidden flex flex-col items-center justify-center border border-white/40 shadow-xl">
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
 
-        {/* Placeholder text for Hero inside */}
+        {/* Headline text — mix-blend-difference inverts colours over the blob images */}
         <div className="z-10 text-center flex flex-col items-center gap-6 px-4 mix-blend-difference top-1/2 absolute -translate-y-1/2 text-white">
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
             Create
@@ -33,7 +36,7 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Real floating 3D Blob images */}
+        {/* Cyan blob — slow scale + rotate loop anchored to top-left; drifts down on scroll */}}
         <motion.div
           style={{ y: y1 }}
           animate={{ scale: [1, 1.5, 1], rotate: [0, 10, -10, 0] }}
@@ -61,7 +64,7 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll button overlapping bottom edge trick */}
+      {/* Scroll CTA — bouncing arrow anchored to the bottom edge of the hero card */}}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
         <a
           href="#blobgrid"
@@ -89,7 +92,7 @@ export default function HeroSection() {
         </a>
       </div>
 
-      {/* spacer for the overlapping button */}
+      {/* Bottom spacer — creates breathing room below the overlapping scroll button */}
       <div className="h-16 w-full" />
     </section>
   );
