@@ -17,6 +17,7 @@ const BLOB_IMAGES = [
   "/blob_gold_sphere Background Removed.png",
 ];
 
+// mockBlobs: Generates 9 placeholder blob entries cycling through the BLOB_IMAGES array
 const mockBlobs = Array.from({ length: 9 }).map((_, i) => ({
   id: i,
   title: `Blob ${i + 1}`,
@@ -24,12 +25,13 @@ const mockBlobs = Array.from({ length: 9 }).map((_, i) => ({
   image: BLOB_IMAGES[i % BLOB_IMAGES.length],
 }));
 
+// BlobGrid: Responsive 3-column masonry-style grid of animated blob cards with download support
 export default function BlobGrid() {
   return (
     <section
       id="blobgrid"
       className="relative w-full max-w-[95%] mx-auto mt-12 pb-48 scroll-mt-24">
-      {/* Grid */}
+      {/* Grid — 1-col on mobile, 2-col on sm, 3-col on lg; cards fade-slide in on viewport entry */}}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {mockBlobs.map((blob, index) => (
           <motion.div
@@ -82,7 +84,7 @@ export default function BlobGrid() {
         ))}
       </div>
 
-      {/* Waitlist Overlay */}
+      {/* Waitlist Overlay — fixed pill that slides in when the grid is in view */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
