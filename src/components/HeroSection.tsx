@@ -20,17 +20,17 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full h-[75vh] min-h-[600px] bg-blob-card rounded-[48px] md:rounded-[60px] relative overflow-hidden flex flex-col items-center justify-center border border-white/40 shadow-xl">
+        className="w-full h-[60vh] min-h-[480px] md:h-[75vh] md:min-h-[600px] bg-blob-card rounded-[48px] md:rounded-[60px] relative overflow-hidden flex flex-col items-center justify-center border border-white/40 shadow-xl">
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
 
         {/* Headline text — mix-blend-difference inverts colours over the blob images */}
-        <div className="z-10 text-center flex flex-col items-center gap-6 px-4 mix-blend-difference top-1/2 absolute -translate-y-1/2 text-white">
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
+        <div className="z-10 text-center flex flex-col items-center gap-4 md:gap-6 px-4 mix-blend-difference top-1/2 absolute -translate-y-1/2 text-white">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
             Create
             <br />
             blobs in 3D
           </h1>
-          <p className="text-lg md:text-xl font-medium tracking-tight max-w-md mx-auto text-white/90">
+          <p className="text-sm sm:text-base md:text-xl font-medium tracking-tight max-w-[280px] sm:max-w-md mx-auto text-white/90">
             The ultimate library for soft, playful, and dynamic 3D shapes ready
             for your next project.
           </p>
@@ -41,11 +41,12 @@ export default function HeroSection() {
           style={{ y: y1 }}
           animate={{ scale: [1, 1.5, 1], rotate: [0, 10, -10, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[10%] left-[5%] md:left-[15%] w-64 h-64 md:w-80 md:h-80 opacity-90 mix-blend-multiply contrast-125 brightness-110">
+          className="absolute top-[10%] left-[-5%] sm:left-[5%] md:left-[15%] w-44 h-44 sm:w-56 sm:h-56 md:w-80 md:h-80 opacity-90 mix-blend-multiply contrast-125 brightness-110">
           <Image
             src="/blob_cyan Background Removed.png"
             alt="Cyan Blob"
             fill
+            sizes="(max-width: 768px) 176px, (max-width: 1200px) 240px, 320px"
             className="object-contain"
           />
         </motion.div>
@@ -54,11 +55,12 @@ export default function HeroSection() {
           style={{ y: y2 }}
           animate={{ scale: [1, 1.5, 1], rotate: [0, -5, 5, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[20%] md:bottom-[15%] right-[5%] md:right-[15%] w-72 h-72 md:w-96 md:h-96 opacity-90 mix-blend-multiply contrast-125 brightness-110">
+          className="absolute bottom-[15%] right-[-5%] sm:right-[5%] md:right-[15%] w-48 h-48 sm:w-60 sm:h-60 md:w-96 md:h-96 opacity-90 mix-blend-multiply contrast-125 brightness-110">
           <Image
             src="/blob_pink Background Removed.png"
             alt="Pink Blob"
             fill
+            sizes="(max-width: 768px) 192px, (max-width: 1200px) 240px, 384px"
             className="object-contain"
           />
         </motion.div>
@@ -86,14 +88,14 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-20 h-20 bg-foreground text-background rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition-transform shadow-xl">
-            <ArrowDown size={32} />
+            className="w-14 h-14 md:w-20 md:h-20 bg-foreground text-background rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition-transform shadow-xl">
+            <ArrowDown className="w-6 h-6 md:w-8 md:h-8" />
           </motion.div>
         </a>
       </div>
 
       {/* Bottom spacer — creates breathing room below the overlapping scroll button */}
-      <div className="h-16 w-full" />
+      <div className="h-10 md:h-16 w-full" />
     </section>
   );
 }
