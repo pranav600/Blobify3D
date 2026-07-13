@@ -87,9 +87,13 @@ export default function BlobGrid() {
 
       {/* Waitlist Overlay — fixed pill that slides in when the grid is in view */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ margin: "100px 0px -200px 0px" }} // Trigger later
+        variants={{
+          hidden: { opacity: 0, y: 50, pointerEvents: "none" as const },
+          visible: { opacity: 1, y: 0, pointerEvents: "auto" as const }
+        }}
         className="fixed bottom-10 left-1/2 -translate-x-1/2 z-40 w-[92%] sm:w-auto max-w-lg">
         <div className="bg-black text-white px-5 py-4 sm:px-8 sm:py-5 rounded-[24px] shadow-2xl flex flex-col sm:flex-row items-center gap-4 sm:gap-6 border border-white/20 text-center sm:text-left">
           <div>
