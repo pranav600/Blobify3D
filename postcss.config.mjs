@@ -1,13 +1,18 @@
 import path from "path";
-import { fileURLToPath } from "url";
+import fs from "fs";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+let baseDir = process.cwd();
+if (!fs.existsSync(path.join(baseDir, "package.json"))) {
+  const fallback = path.join(baseDir, "blobs3d");
+  if (fs.existsSync(path.join(fallback, "package.json"))) {
+    baseDir = fallback;
+  }
+}
 
 const config = {
   plugins: {
     "@tailwindcss/postcss": {
-      base: __dirname,
+      base: baseDir,
     },
   },
 };
